@@ -277,13 +277,12 @@ async function fetchResponses() {
     const data = await r.json();
     responses = data || {};
     renderList();
-    updateLastUpdated();
+    const now = new Date();
+    document.getElementById('lastUpdated').textContent =
+      'Updated ' + now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'});
   } catch(e) {
-    // Always show the UI even if Firebase fails
     renderList();
-    document.getElementById('loadingOverlay').style.display = 'none';
     document.getElementById('lastUpdated').textContent = 'Reconnecting…';
-    showToast('Connection issue — retrying…');
   }
 }
 
