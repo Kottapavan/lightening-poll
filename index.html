@@ -33,14 +33,14 @@
     font-size: 1.2rem;
     font-weight: 700;
     line-height: 1.4;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .live-bar {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin-top: 8px;
+    margin-top: 6px;
   }
   .live-dot {
     width: 8px; height: 8px;
@@ -50,141 +50,95 @@
   }
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
+    50%       { opacity: 0.5; transform: scale(0.8); }
   }
-  .live-text {
-    color: #bbf7d0;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-  }
-  .last-updated {
-    color: #93c5fd;
-    font-size: 0.7rem;
-    margin-left: 8px;
-  }
+  .live-text   { color: #bbf7d0; font-size: 0.75rem; font-weight: 600; }
+  .last-updated { color: #93c5fd; font-size: 0.7rem; margin-left: 6px; }
 
   .progress-bar-wrap {
-    background: #1e3a8a;
-    height: 5px;
-    margin-top: 12px;
-    overflow: hidden;
+    background: #1e3a8a; height: 5px; margin-top: 12px; overflow: hidden;
   }
   .progress-bar {
-    height: 100%;
-    background: #60a5fa;
-    transition: width 0.5s ease;
-    width: 0%;
+    height: 100%; background: #60a5fa;
+    transition: width 0.5s ease; width: 0%;
   }
 
-  /* Name picker */
-  .name-picker {
-    padding: 14px 20px;
-    background: #fffbeb;
-    border-bottom: 2px solid #fde68a;
+  /* Column header */
+  .col-header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    padding: 8px 20px;
+    background: #f1f5f9;
+    border-bottom: 2px solid #e2e8f0;
   }
-  .name-picker label {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: #92400e;
-    white-space: nowrap;
-  }
-  .name-picker select {
-    flex: 1;
-    padding: 7px 10px;
-    border-radius: 8px;
-    border: 1.5px solid #fcd34d;
-    font-size: 0.88rem;
-    color: #1e293b;
-    background: #fff;
-    outline: none;
-    cursor: pointer;
-  }
-  .name-picker select:focus { border-color: #f59e0b; }
+  .col-header .ch-num  { width: 26px; flex-shrink: 0; }
+  .col-header .ch-name { flex: 1; font-size: 0.72rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; }
+  .col-header .ch-yes  { width: 68px; text-align: center; font-size: 0.72rem; font-weight: 700; color: #16a34a; text-transform: uppercase; letter-spacing: 0.06em; }
+  .col-header .ch-no   { width: 68px; text-align: center; font-size: 0.72rem; font-weight: 700; color: #dc2626; text-transform: uppercase; letter-spacing: 0.06em; }
 
-  /* Sections */
-  .section-label {
-    padding: 7px 20px 5px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .yes-label  { color: #16a34a; background: #f0fdf4; border-bottom: 1px solid #bbf7d0; }
-  .no-label   { color: #dc2626; background: #fff1f1; border-bottom: 1px solid #fecaca; }
-  .pending-label { color: #64748b; background: #f8faff; border-bottom: 1px solid #e2e8f0; }
-
+  /* Rows */
   .row {
     display: flex;
     align-items: center;
-    padding: 11px 20px;
+    padding: 10px 20px;
     border-bottom: 1px solid #f1f5f9;
-    gap: 10px;
+    gap: 8px;
     transition: background 0.15s;
   }
-  .row:hover { background: #f8faff; }
-  .row.yes-row  { background: #f9fffe; }
-  .row.no-row   { background: #fffafa; }
-  .row.my-row   { outline: 2px solid #fbbf24; outline-offset: -2px; background: #fffdf0 !important; }
+  .row:last-child { border-bottom: none; }
+  .row:nth-child(even) { background: #fafbff; }
+  .row:hover { background: #f0f4ff; }
+  .row.yes-row { background: #f0fdf4 !important; }
+  .row.no-row  { background: #fff1f2 !important; }
 
-  .num { color: #94a3b8; font-size: 0.78rem; width: 20px; flex-shrink: 0; text-align: right; }
-  .name { flex: 1; font-size: 0.95rem; color: #1e293b; font-weight: 500; }
-  .yes-row .name { color: #15803d; font-weight: 600; }
+  .num  { color: #94a3b8; font-size: 0.78rem; width: 22px; flex-shrink: 0; text-align: right; }
+  .name { flex: 1; font-size: 0.93rem; color: #1e293b; font-weight: 500; }
+  .yes-row .name { color: #15803d; font-weight: 700; }
   .no-row  .name { color: #b91c1c; }
 
-  .me-badge {
-    font-size: 0.65rem;
-    background: #fef3c7;
-    color: #92400e;
-    border: 1px solid #fcd34d;
-    border-radius: 10px;
-    padding: 1px 6px;
-    font-weight: 700;
-    flex-shrink: 0;
+  /* Vote status badge */
+  .status {
+    font-size: 0.72rem; font-weight: 700;
+    padding: 2px 8px; border-radius: 20px;
+    min-width: 38px; text-align: center; flex-shrink: 0;
   }
+  .status-yes { background: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+  .status-no  { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+  .status-pending { background: #f1f5f9; color: #94a3b8; border: 1px solid #e2e8f0; }
 
-  .btns { display: flex; gap: 7px; flex-shrink: 0; }
+  /* Buttons */
+  .btns { display: flex; gap: 6px; flex-shrink: 0; }
   .btn {
-    width: 64px; height: 34px;
-    border-radius: 9px; border: 2px solid;
-    font-size: 0.8rem; font-weight: 600;
-    cursor: pointer; transition: all 0.18s;
-    display: flex; align-items: center; justify-content: center; gap: 3px;
+    width: 44px; height: 32px;
+    border-radius: 8px; border: 2px solid;
+    font-size: 1rem; font-weight: 600;
+    cursor: pointer; transition: all 0.15s;
+    display: flex; align-items: center; justify-content: center;
     background: transparent; outline: none;
     -webkit-tap-highlight-color: transparent;
   }
-  .btn:disabled { opacity: 0.35; cursor: default; }
+  .btn-yes { border-color: #86efac; color: #16a34a; }
+  .btn-yes:hover  { background: #f0fdf4; border-color: #22c55e; }
+  .btn-yes.active { background: #22c55e; color: #fff; border-color: #22c55e; }
 
-  .btn-yes { border-color: #22c55e; color: #16a34a; }
-  .btn-yes:not(:disabled):hover  { background: #f0fdf4; }
-  .btn-yes.active { background: #22c55e; color: #fff; }
-
-  .btn-no { border-color: #ef4444; color: #dc2626; }
-  .btn-no:not(:disabled):hover  { background: #fff1f1; }
-  .btn-no.active { background: #ef4444; color: #fff; }
+  .btn-no { border-color: #fca5a5; color: #dc2626; }
+  .btn-no:hover  { background: #fff1f1; border-color: #ef4444; }
+  .btn-no.active { background: #ef4444; color: #fff; border-color: #ef4444; }
 
   /* Summary */
   .summary {
-    padding: 16px 20px;
+    padding: 14px 20px;
     border-top: 2px solid #e2e8f0;
     display: flex;
     justify-content: space-around;
     background: #f8faff;
   }
   .stat { text-align: center; }
-  .stat-num { font-size: 1.7rem; font-weight: 800; }
+  .stat-num   { font-size: 1.6rem; font-weight: 800; }
   .stat-label { font-size: 0.72rem; color: #64748b; margin-top: 1px; }
-  .yes-num { color: #16a34a; }
-  .no-num  { color: #dc2626; }
+  .yes-num     { color: #16a34a; }
+  .no-num      { color: #dc2626; }
   .pending-num { color: #94a3b8; }
-
-  /* Loading overlay */
-  .loading-overlay { display: none; }
-  .spinner { display: none; }
-  .loading-text { display: none; }
 
   .toast {
     position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
@@ -214,31 +168,11 @@
     </div>
   </div>
 
-  <div class="name-picker">
-    <label>👤 I am:</label>
-    <select id="myNameSelect" onchange="onNameChange()">
-      <option value="">— Select your name —</option>
-      <option>Anuj Subedi</option>
-      <option>Gopal Nayak</option>
-      <option>Vaibhav Desai</option>
-      <option>Pavan Kotta</option>
-      <option>Suman Suraparaju</option>
-      <option>Chakri Akella</option>
-      <option>Rahul Lal</option>
-      <option>Vinod SP</option>
-      <option>Faiz Rehmani</option>
-      <option>Avinash Krishnaram</option>
-      <option>Teekam Lohano</option>
-      <option>Karthik Sarpatwari</option>
-      <option>Deepak Atluri</option>
-      <option>Sumesh Parat</option>
-      <option>Lu</option>
-      <option>Satish</option>
-      <option>Sarabjit Tatra</option>
-      <option>Veeresh Erched</option>
-      <option>Anish</option>
-      <option>Jayaraj</option>
-    </select>
+  <div class="col-header">
+    <span class="ch-num">#</span>
+    <span class="ch-name">Name</span>
+    <span class="ch-yes">✅ Yes</span>
+    <span class="ch-no">❌ No</span>
   </div>
 
   <div id="pollList"></div>
@@ -251,8 +185,8 @@
 </div>
 
 <script>
-const DB_URL  = 'https://lightening-project-49d35-default-rtdb.firebaseio.com/responses';
-const NAMES   = [
+const DB_URL = 'https://lightening-project-49d35-default-rtdb.firebaseio.com/responses';
+const NAMES  = [
   "Anuj Subedi","Gopal Nayak","Vaibhav Desai","Pavan Kotta",
   "Suman Suraparaju","Chakri Akella","Rahul Lal","Vinod SP",
   "Faiz Rehmani","Avinash Krishnaram","Teekam Lohano",
@@ -260,20 +194,15 @@ const NAMES   = [
   "Satish","Sarabjit Tatra","Veeresh Erched","Anish","Jayaraj"
 ];
 
-let responses  = {};
-let myName     = localStorage.getItem('pollMyName') || '';
-let polling    = null;
+let responses = {};
 
-// ── Restore saved name ───────────────────────────────────────────
-document.getElementById('myNameSelect').value = myName;
-
-// ── Firebase helpers ─────────────────────────────────────────────
+// ── Firebase ──────────────────────────────────────────────────────
 async function fetchResponses() {
   try {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000);
+    const t = setTimeout(() => controller.abort(), 8000);
     const r = await fetch(DB_URL + '.json', { signal: controller.signal });
-    clearTimeout(timeout);
+    clearTimeout(t);
     const data = await r.json();
     responses = data || {};
     renderList();
@@ -289,4 +218,76 @@ async function fetchResponses() {
 async function saveVote(idx, val) {
   try {
     await fetch(`${DB_URL}/${idx}.json`, {
-      method: 'PU
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(val)
+    });
+  } catch(e) {
+    showToast('Save failed — please try again');
+  }
+}
+
+// ── Render ────────────────────────────────────────────────────────
+function renderList() {
+  const list = document.getElementById('pollList');
+  list.innerHTML = '';
+
+  // Sort: yes first, then no, then pending
+  const entries = NAMES.map((name, i) => ({ name, i }));
+  entries.sort((a, b) => {
+    const order = v => v === 'yes' ? 0 : v === 'no' ? 1 : 2;
+    return order(responses[a.i]) - order(responses[b.i]);
+  });
+
+  entries.forEach(({ name, i }, displayIdx) => {
+    const vote = responses[i];
+    const row  = document.createElement('div');
+    row.className = 'row' + (vote === 'yes' ? ' yes-row' : vote === 'no' ? ' no-row' : '');
+
+    const statusHtml = vote === 'yes'
+      ? '<span class="status status-yes">Yes</span>'
+      : vote === 'no'
+      ? '<span class="status status-no">No</span>'
+      : '<span class="status status-pending">—</span>';
+
+    row.innerHTML = `
+      <span class="num">${displayIdx + 1}</span>
+      <span class="name">${name}</span>
+      ${statusHtml}
+      <div class="btns">
+        <button class="btn btn-yes ${vote === 'yes' ? 'active' : ''}" onclick="vote(${i},'yes')" title="Yes">✅</button>
+        <button class="btn btn-no  ${vote === 'no'  ? 'active' : ''}" onclick="vote(${i},'no')"  title="No">❌</button>
+      </div>`;
+    list.appendChild(row);
+  });
+
+  // Stats
+  const yes     = Object.values(responses).filter(v => v === 'yes').length;
+  const no      = Object.values(responses).filter(v => v === 'no').length;
+  const pending = NAMES.length - yes - no;
+  document.getElementById('yesCount').textContent     = yes;
+  document.getElementById('noCount').textContent      = no;
+  document.getElementById('pendingCount').textContent = pending;
+  document.getElementById('progressBar').style.width  = Math.round(((yes + no) / NAMES.length) * 100) + '%';
+}
+
+// ── Vote ──────────────────────────────────────────────────────────
+async function vote(idx, val) {
+  const newVal = responses[idx] === val ? null : val;
+  if (newVal === null) delete responses[idx]; else responses[idx] = newVal;
+  renderList();
+  await saveVote(idx, newVal);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── Start ─────────────────────────────────────────────────────────
+fetchResponses();
+setInterval(fetchResponses, 4000);
+</script>
+</body>
+</html>
