@@ -288,13 +288,20 @@ document.getElementById('myNameSelect').value = myName;
 // ── Firebase helpers ─────────────────────────────────────────────
 async function fetchResponses() {
   try {
-    const r = await fetch(DB_URL + '.json');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    const r = await fetch(DB_URL + '.json', { signal: controller.signal });
+    clearTimeout(timeout);
     const data = await r.json();
     responses = data || {};
     renderList();
     updateLastUpdated();
   } catch(e) {
-    showToast('Connection error — retrying…');
+    // Always show the UI even if Firebase fails
+    renderList();
+    document.getElementById('loadingOverlay').style.display = 'none';
+    document.getElementById('lastUpdated').textContent = 'Reconnecting…';
+    showToast('Connection issue — retrying…');
   }
 }
 
